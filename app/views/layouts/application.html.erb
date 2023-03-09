@@ -11,10 +11,13 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg bg-light border border-bottom-2 px-4">
+    <nav class="navbar navbar-expand-lg bg-white border border-bottom-2 px-4">
       <div class="container-fluid d-flex justify-content-between align-items-center">
-        <%= link_to 'My Watch List', root_path, class: 'navbar-brand text-decoration-none fs-5 text-dark' %>
-        <%= link_to 'New List', new_list_path, class: 'btn btn-outline-primary' %>
+        <%= image_tag "movie_watch_list_logo.jpg", alt: "My Movie Watch List Logo", width: 50 %>
+        <div class="d-flex gap-2">
+          <%= link_to 'My Watch List', lists_path, class: 'btn btn-none text-dark' %>
+          <%= link_to 'New List', new_list_path, class: 'btn btn-outline-primary' %>
+        </div>
       </div>
     </nav>
     <%= yield %>
