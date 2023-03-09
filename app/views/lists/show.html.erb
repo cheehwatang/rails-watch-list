@@ -6,6 +6,16 @@
 </div>
 
 <div class="container position-relative w-75 my-5 pb-5" style="top: 80px;">
+
+  <% if notice %>
+    <div class="alert alert-success d-flex justify-content-between align-items-center">
+      <%= notice %>
+      <a class="link-secondary cursor-pointer" data-dismiss="notice" onclick="this.parentElement.classList.add('d-none');">
+        <i class="fa-sharp fa-solid fa-xmark"></i>
+      </a>
+    </div>
+  <% end %>
+
   <div class="cards d-flex flex-wrap gap-5">
     <% @list.bookmarks.each do |bookmark| %>
       <div class="card flat-card border border-0 rounded-4 shadow" style="width: 500px;">
