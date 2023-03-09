@@ -30,7 +30,9 @@
 
   <%= link_to 'Back', lists_path, class: 'btn btn-primary my-5' %>
 
-  <h2 class="fs-3 my-3">Add Movie to List</h2>
-  <%= render 'bookmarks/form', { list: @list, bookmark: @bookmark } %>
+  <h2 class="fs-3 my-3 ps-4">Add Movie to List</h2>
+  <div class="bg-white p-4 border border-muted border-0 rounded-4 shadow-sm">
+    <%= render 'bookmarks/form', { list: @list, bookmark: @bookmark } %>
+  </div>
 
 </div>
