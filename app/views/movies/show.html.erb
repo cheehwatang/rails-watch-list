@@ -1,6 +1,8 @@
-<div class="container position-relative w-75 my-5" style="top: 80px;">
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= @movie.poster_url %>)"></div>
+<div class="banner position-relative" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @movie.poster_url %>); top: 80px;">
+  <div class="container"></div>
+</div>
 
+<div class="container position-relative w-75 my-5" style="top: 80px;">
   <h1><%= @movie.title %></h1>
 
   <p>Rating: <%= @movie.rating %></p>
