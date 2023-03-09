@@ -1,0 +1,6 @@
+<%= simple_form_for [list, bookmark] do |f| %>
+  <%= f.association :movie %>
+  <%= f.input :comment %>
+  <%= f.submit 'Add Movie', class: "btn btn-outline-primary" %>
+  <%= f.button :button, 'Reset', type: :reset %>
+<% end %>

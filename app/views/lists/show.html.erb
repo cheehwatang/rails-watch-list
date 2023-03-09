@@ -30,12 +30,7 @@
   <%= link_to 'Back', lists_path, class: 'btn btn-primary my-4' %>
 
 
-  <h2 class="fs-2 my-3">Add Movie to List</h2>
-  <%= simple_form_for [@list, @bookmark] do |f| %>
-    <%= f.input :comment %>
-    <%= f.association :movie %>
-    <%= f.submit class: "btn btn-outline-primary" %>
-    <%= f.button :button, 'Reset', type: :reset %>
-  <% end %>
+  <h2 class="fs-3 my-3">Add Movie to List</h2>
+  <%= render 'bookmarks/form', { list: @list, bookmark: @bookmark } %>
 
 </div>
