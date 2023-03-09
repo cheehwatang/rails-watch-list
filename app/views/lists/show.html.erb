@@ -13,10 +13,18 @@
   <%= f.button :button, 'Reset', type: :reset %>
 <% end %>
 
-<div class="cards">
+<div class="cards d-flex flex-wrap gap-5">
   <% @list.movies.each do |movie| %>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= movie.poster_url %>)">
-      <%= link_to movie.title, movie_path(movie), class: 'text-decoration-none text-white' %>
+    <div class="card flat-card" style="width: 20rem;">
+      <div class="card-body card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= movie.poster_url %>)">
+        <%= link_to movie.title, list_movie_path(@list, movie), class: 'text-decoration-none text-white' %>
+      </div>
+      <div class="card-footer d-flex gap-3 bg-white">
+        <%= link_to 'Delete', list_movie_path(@list, movie),
+          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+          class: 'text-danger text-decoration-none'
+        %>
+      </div>
     </div>
   <% end %>
 </div>
