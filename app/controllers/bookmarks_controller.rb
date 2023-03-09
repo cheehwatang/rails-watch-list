@@ -7,6 +7,8 @@ class BookmarksController < ApplicationController
     if @bookmark.save
       redirect_to list_path(@list)
     else
+      @movies = Movie.excluding(@list.movies)
+      @reviews = @list.reviews.order(updated_at: :DESC)
       render 'lists/show', status: :unprocessable_entity
     end
   end

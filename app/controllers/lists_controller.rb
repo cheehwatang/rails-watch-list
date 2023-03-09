@@ -8,6 +8,7 @@ class ListsController < ApplicationController
     @bookmark = Bookmark.new
     @movies = Movie.excluding(@list.movies)
     @reviews = @list.reviews.order(updated_at: :DESC)
+    @review = Review.new
   end
 
   def new
