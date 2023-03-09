@@ -8,8 +8,8 @@
 <div class="container position-relative w-75 my-5 pb-5" style="top: 80px;">
   <div class="cards d-flex flex-wrap gap-5">
     <% @list.bookmarks.each do |bookmark| %>
-      <div class="card flat-card" style="width: 500px;">
-        <div class="card-body card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= bookmark.movie.poster_url %>); height: 200px;"></div>
+      <div class="card flat-card border border-0 rounded-4 shadow" style="width: 500px;">
+        <div class="card-body card-category border border-0 rounded-bottom rounded-4" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= bookmark.movie.poster_url %>); height: 200px;"></div>
         <div class="p-3 d-flex flex-column gap-3">
           <div class="d-flex gap-1 align-items-center">
             <%= link_to bookmark.movie.title, list_movie_path(@list, bookmark.movie), class: 'text-decoration-none text-dark fs-5 fw-bold' %>
@@ -28,8 +28,7 @@
     <% end %>
   </div>
 
-  <%= link_to 'Back', lists_path, class: 'btn btn-primary my-4' %>
-
+  <%= link_to 'Back', lists_path, class: 'btn btn-primary my-5' %>
 
   <h2 class="fs-3 my-3">Add Movie to List</h2>
   <%= render 'bookmarks/form', { list: @list, bookmark: @bookmark } %>
