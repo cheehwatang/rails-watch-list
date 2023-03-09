@@ -1,24 +1,23 @@
 <div class="banner position-relative" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @list.image_url %>); top: 80px;">
-  <div class="container">
-    <h1><%= @list.name %> Movies</h1>
+  <div class="container text-center">
+    <h1 class="fs-1 pb-3"><%= @list.name %> Movies</h1>
   </div>
 </div>
 
-<div class="container position-relative w-75 my-5" style="top: 80px;">
-  <h1><%= @list.name %> Movies</h1>
-
-  <%= simple_form_for [@list, @bookmark] do |f| %>
-    <%= f.input :comment %>
-    <%= f.association :movie %>
-    <%= f.submit class: "btn btn-outline-primary" %>
-    <%= f.button :button, 'Reset', type: :reset %>
-  <% end %>
-
+<div class="container position-relative w-75 my-5 pb-5" style="top: 80px;">
   <div class="cards d-flex flex-wrap gap-5">
     <% @list.bookmarks.each do |bookmark| %>
-      <div class="card flat-card" style="width: 20rem;">
-        <div class="card-body card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= bookmark.movie.poster_url %>)">
-          <%= link_to bookmark.movie.title, list_movie_path(@list, bookmark.movie), class: 'text-decoration-none text-white' %>
+      <div class="card flat-card" style="width: 500px;">
+        <div class="card-body card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= bookmark.movie.poster_url %>); height: 200px;"></div>
+        <div class="p-3 d-flex flex-column gap-3">
+          <div class="d-flex gap-3 align-items-center">
+            <%= link_to bookmark.movie.title, list_movie_path(@list, bookmark.movie), class: 'text-decoration-none text-dark fs-3 fw-bold' %>
+            <span class="d-inline">
+              <i class="fa-solid fa-period"></i>
+              <i class="fa-solid fa-star" style="color: #FFD43B"></i> <%= bookmark.movie.rating %>
+            </span>
+          </div>
+          <p><%= bookmark.movie.overview %></p>
         </div>
         <div class="card-footer d-flex gap-3 bg-white">
           <%= link_to 'Delete', list_bookmark_path(@list, bookmark),
@@ -31,4 +30,14 @@
   </div>
 
   <%= link_to 'Back', lists_path, class: 'btn btn-primary my-4' %>
+
+
+  <h2 class="fs-2 my-3">Add Movie to List</h2>
+  <%= simple_form_for [@list, @bookmark] do |f| %>
+    <%= f.input :comment %>
+    <%= f.association :movie %>
+    <%= f.submit class: "btn btn-outline-primary" %>
+    <%= f.button :button, 'Reset', type: :reset %>
+  <% end %>
+
 </div>
