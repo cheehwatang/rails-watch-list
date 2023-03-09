@@ -10,20 +10,18 @@
       <div class="card flat-card" style="width: 500px;">
         <div class="card-body card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= bookmark.movie.poster_url %>); height: 200px;"></div>
         <div class="p-3 d-flex flex-column gap-3">
-          <div class="d-flex gap-3 align-items-center">
-            <%= link_to bookmark.movie.title, list_movie_path(@list, bookmark.movie), class: 'text-decoration-none text-dark fs-3 fw-bold' %>
-            <span class="d-inline">
-              <i class="fa-solid fa-period"></i>
-              <i class="fa-solid fa-star" style="color: #FFD43B"></i> <%= bookmark.movie.rating %>
-            </span>
+          <div class="d-flex gap-1 align-items-center">
+            <%= link_to bookmark.movie.title, list_movie_path(@list, bookmark.movie), class: 'text-decoration-none text-dark fs-5 fw-bold' %>
+            <span class="text-secondary"> ・ <%= bookmark.movie.rating %> <i class="fa-solid fa-star" style="color: #FFD43B"></i></span>
           </div>
-          <p><%= bookmark.movie.overview %></p>
-        </div>
-        <div class="card-footer d-flex gap-3 bg-white">
-          <%= link_to 'Delete', list_bookmark_path(@list, bookmark),
-            data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-            class: 'text-danger text-decoration-none'
-          %>
+          <p class="text-secondary"><%= bookmark.movie.overview %></p>
+          <div class="d-flex justify-content-between align-items-start mt-3">
+            <p class=""><i class="fa-solid fa-quote-left fa-xl"></i> <%= bookmark.comment %></p>
+            <%= link_to 'delete', list_bookmark_path(@list, bookmark),
+              data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+              class: 'text-danger text-decoration-none'
+            %>
+          </div>
         </div>
       </div>
     <% end %>
