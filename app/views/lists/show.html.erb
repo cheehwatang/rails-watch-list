@@ -19,6 +19,7 @@
   <% end %>
 
   <div class="cards d-flex flex-wrap gap-5">
+    <h1 class="fs-2 ms-5"><%= 'Add your first movie!' if @list.bookmarks.empty? %></h1>
     <% @list.bookmarks.each do |bookmark| %>
       <div class="card flat-card border border-0 rounded-4 shadow" style="width: 500px;">
         <div class="card-body card-category border border-0 rounded-bottom rounded-4" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= bookmark.movie.poster_url %>); height: 200px;"></div>
@@ -40,7 +41,7 @@
     <% end %>
   </div>
 
-  <%= link_to 'Back', lists_path, class: 'btn btn-primary my-5' %>
+  <%= link_to 'Back', lists_path, class: 'btn btn-primary border border-0 rounded-4 m-5 px-4 py-2' %>
 
   <div class="container w-50">
     <h2 class="fs-3 my-3 ps-4">Add Movie to List</h2>
@@ -52,8 +53,8 @@
   <hr>
 
   <div class="container d-flex">
-    <div class="container my-5">
-      <h2 class="fs-4">Reviews</h2>
+    <div class="container">
+      <h2 class="fs-4 my-3">Reviews</h2>
       <% @reviews.each do |review| %>
         <div class="border-bottom mb-3">
           <p class="mb-0">
@@ -71,7 +72,7 @@
     </div>
     <div class="container">
       <h2 class="fs-4 my-3 ps-4">Add your review</h2>
-      <div class="bg-white p-4 mb-5 border border-muted border-0 rounded-4 shadow-sm">
+      <div class="bg-white p-4 mb-5 border border-muted border-0 rounded-1 shadow-sm">
         <%= render 'reviews/form', { list: @list, review: @review } %>
       </div>
     </div>
