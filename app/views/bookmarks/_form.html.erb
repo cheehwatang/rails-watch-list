@@ -1,5 +1,5 @@
 <%= simple_form_for [list, bookmark] do |f| %>
-  <%= f.association :movie, collection: movies, input_html: { data: { controller: "tom-select" } } %>
+  <%= f.association :movie, collection: movies %>
   <%= f.input :comment %>
   <%= f.submit 'Add Movie', class: "btn btn-outline-primary" %>
   <%= f.button :button, 'Reset', type: :reset %>
