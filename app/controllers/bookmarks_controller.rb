@@ -9,6 +9,7 @@ class BookmarksController < ApplicationController
     else
       @movies = Movie.excluding(@list.movies)
       @reviews = @list.reviews.order(updated_at: :DESC)
+      @review = Review.new
       render 'lists/show', status: :unprocessable_entity
     end
   end
