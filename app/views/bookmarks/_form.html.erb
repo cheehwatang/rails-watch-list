@@ -1,6 +1,6 @@
 <%= simple_form_for [list, bookmark] do |f| %>
   <%= f.association :movie, collection: movies %>
   <%= f.input :comment %>
-  <%= f.submit 'Add Movie', class: "btn btn-outline-primary" %>
+  <%= f.submit 'Confirm', class: "btn btn-outline-success rounded-4" %>
   <%= f.button :button, 'Reset', type: :reset %>
 <% end %>
