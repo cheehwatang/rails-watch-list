@@ -1,7 +1,7 @@
 <div class="banner position-relative"
   style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= @list.photo.attached? ? (cl_image_path @list.photo.key, height: 300, crop: :fill) : (image_path('film_redux_logo_white')) %>'); top: 70px;"
 >
-  <div class="btn btn-warning fw-bold text-white px-3 position-absolute border border-0 rounded-4" style="top: 20px; right: 20px;"><%= @list.bookmarks.count %> <%= 'movie'.pluralize(@list.bookmarks.count) %></div>
+  <div class="btn btn-warning fw-bold text-white px-3 position-absolute border border-0 rounded-4" style="bottom: 20px; right: 20px;"><%= @list.bookmarks.count %> <%= 'movie'.pluralize(@list.bookmarks.count) %></div>
   <div class="container text-center">
     <h1 class="fs-1 pb-3"><%= @list.name %> Movies</h1>
   </div>
@@ -18,32 +18,34 @@
     </div>
   <% end %>
 
-  <div class="d-flex flex-wrap gap-5">
-    <%= ("<h1 class='fs-2 ms-5'>Add your first movie!</h1>").html_safe if @list.bookmarks.empty? %>
-    <% @list.bookmarks.each do |bookmark| %>
-      <div class="card border border-0 rounded-4 shadow" style="width: 450px">
-        <div class="d-flex flex-column gap-3">
-          <div class="border border-0 rounded-bottom rounded-4" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= bookmark.movie.poster_url %>); height: 600px;"></div>
-          <div class="p-4">
-            <div class="d-flex gap-1 align-items-center">
-              <%= link_to bookmark.movie.title, list_movie_path(@list, bookmark.movie), class: 'text-decoration-none text-dark fs-5 fw-bold' %>
-              <span class="text-secondary"> ・ <%= bookmark.movie.rating %> <i class="fa-solid fa-star" style="color: #FFD43B"></i></span>
+  <% if @list.bookmarks.empty? %>
+    <h1 class='fs-2'>Add your first movie!</h1>
+  <% else %>
+    <div class="cards">
+      <% @list.bookmarks.each do |bookmark| %>
+        <div class="card border border-0 rounded-4 shadow" style="width: 350px">
+          <div class="border border-0 rounded-bottom rounded-4 mb-3" style="background-image: url(<%= bookmark.movie.poster_url %>); background-size: cover; height: 460px;"></div>
+          <div class="mx-4 flex-grow-1 mb-3">
+            <div class="d-flex gap-1 align-items-center mb-2">
+              <%= link_to list_movie_path(@list, bookmark.movie), class: 'text-decoration-none text-dark fs-5 fw-bold' do %>
+                <%= bookmark.movie.title %><span class="text-secondary fs-6"> ・ <%= bookmark.movie.rating %> <i class="fa-solid fa-star" style="color: #FFD43B"></i></span>
+              <% end %>
             </div>
-            <p class="text-secondary"><%= bookmark.movie.overview %></p>
-            <div class="d-flex justify-content-between align-items-start mt-3">
-              <p class=""><i class="fa-solid fa-quote-left fa-xl"></i> <%= bookmark.comment %></p>
-              <%= link_to 'delete', bookmark_path(bookmark),
-                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-                class: 'text-danger text-decoration-none'
-              %>
-            </div>
+            <p class="text-secondary line-clamp"><%= bookmark.movie.overview %></p>
+          </div>
+          <div class="mx-4 mb-2 d-flex justify-content-between align-items-start gap-3">
+            <p class="text-truncate"><i class="fa-solid fa-quote-left fa-xl"></i> <%= bookmark.comment %></p>
+            <%= link_to 'delete', bookmark_path(bookmark),
+              data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+              class: 'text-danger text-decoration-none'
+            %>
           </div>
         </div>
-      </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
+  <% end %>
 
-  <%= link_to 'Back', lists_path, class: 'btn btn-primary border border-0 rounded-4 m-5 px-4 py-2' %>
+  <%= link_to 'Back', lists_path, class: 'btn btn-primary border border-0 rounded-4 my-5 px-4 py-2' %>
 
   <div class="container w-50">
     <h2 class="fs-3 my-3 ps-4">Add Movie to List</h2>
