@@ -2,3 +2,6 @@
 import "@hotwired/turbo-rails"
 import "bootstrap";
 import "./controllers"
+
+import AOS from 'aos';
+AOS.init();
