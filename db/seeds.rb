@@ -1,14 +1,13 @@
 require "open-uri"
 
-# superhero_movie = Movie.create(title: "Wonder Woman 1984", overview: "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s", poster_url: "https://image.tmdb.org/t/p/original/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg", rating: 6.9)
-# romance_movie = Movie.create(title: "The Shawshank Redemption", overview: "Framed in the 1940s for double murder, upstanding banker Andy Dufresne begins a new life at the Shawshank prison", poster_url: "https://image.tmdb.org/t/p/original/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg", rating: 8.7)
-# Movie.create(title: "Titanic", overview: "101-year-old Rose DeWitt Bukater tells the story of her life aboard the Titanic.", poster_url: "https://image.tmdb.org/t/p/original/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg", rating: 7.9)
-# Movie.create(title: "Ocean's Eight", overview: "Debbie Ocean, a criminal mastermind, gathers a crew of female thieves to pull off the heist of the century.", poster_url: "https://image.tmdb.org/t/p/original/MvYpKlpFukTivnlBhizGbkAe3v.jpg", rating: 7.0)
-
 List.destroy_all
 Movie.destroy_all
 Bookmark.destroy_all
 Review.destroy_all
+
+romance_movie = Movie.create(title: "Titanic", overview: "101-year-old Rose DeWitt Bukater tells the story of her life aboard the Titanic.", poster_url: "https://image.tmdb.org/t/p/original/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg", rating: 7.9)
+drama_movie = Movie.create(title: "Ocean's Eight", overview: "Debbie Ocean, a criminal mastermind, gathers a crew of female thieves to pull off the heist of the century.", poster_url: "https://image.tmdb.org/t/p/original/MvYpKlpFukTivnlBhizGbkAe3v.jpg", rating: 7.0)
+superhero_movie = Movie.create(title: "Wonder Woman 1984", overview: "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s", poster_url: "https://image.tmdb.org/t/p/original/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg", rating: 6.9)
 
 json_file = JSON.parse(URI.open("https://tmdb.lewagon.com/movie/top_rated").read)
 
@@ -16,16 +15,39 @@ json_file["results"].each do |movie|
   Movie.create(title: movie["title"], overview: movie["overview"], poster_url: "https://image.tmdb.org/t/p/w500#{movie['poster_path']}", rating: movie["vote_average"])
 end
 
-second_movie = Movie.all[1]
+timeless = URI.open("https://res.cloudinary.com/dsx50recn/image/upload/v1678525760/timeless_films_d68czy.jpg")
+timeless_list = List.new(name: 'Timeless')
+timeless_list.photo.attach(io: timeless, filename: "timeless_films_d68czy.jpg", content_type: "image/jpg")
+timeless_list.save
 
-drama_list = List.create(name: 'Drama', image_url: "https://media.istockphoto.com/id/1441027051/photo/couple-holding-hands-at-valentines-table-on-date-or-romantic-anniversary-celebration-together.jpg?b=1&s=170667a&w=0&k=20&c=fWW_CAsM1oKi6QVsaur0kfdCVvcyocZy8GnpCPkSKbU=")
-superhero_list = List.create(name: 'Superhero', image_url: "https://gentwenty.com/wp-content/uploads/2013/07/Superheroes.jpg")
-List.create(name: 'Comedy', image_url: "https://static.vecteezy.com/system/resources/previews/001/933/195/original/comedy-show-neon-signs-style-text-free-vector.jpg")
-List.create(name: 'Adventure', image_url: "https://www.visitsaudi.com/content/dam/saudi-tourism/media/activities-and-attractions-categories/Adventure_Activities_Hero_Banner.jpg")
-List.create(name: 'Horror', image_url: "https://cdn.theatlantic.com/thumbor/TLZcrk9rQ0X12gtrivdlG-FmvYo=/0x0:2500x1406/960x540/media/img/mt/2022/01/scr14979r_2/original.jpg")
+romance = URI.open("https://res.cloudinary.com/dsx50recn/image/upload/v1678525760/romance_films_au4wra.jpg")
+romance_list = List.new(name: 'Romance')
+romance_list.photo.attach(io: romance, filename: "romance_films_au4wra.jpg", content_type: "image/jpg")
+romance_list.save
 
-Bookmark.create(comment: 'Rose and Jack, breathtaking...', movie: Movie.first, list: drama_list)
-Bookmark.create(comment: 'My favourite superhero movie!', movie: second_movie, list: drama_list)
+drama = URI.open("https://res.cloudinary.com/dsx50recn/image/upload/v1678525760/drama_films_wtfcof.jpg")
+drama_list = List.new(name: 'Drama')
+drama_list.photo.attach(io: drama, filename: "drama_films_wtfcof.jpg", content_type: "image/jpg")
+drama_list.save
 
-Review.create(content: 'My favourite superhero list', rating: 5, list: drama_list)
-Review.create(content: 'It was okay...', rating: 3, list: drama_list)
+superhero = URI.open("https://res.cloudinary.com/dsx50recn/image/upload/v1678525761/superhero_films_flkbwk.jpg")
+superhero_list = List.new(name: 'Superhero')
+superhero_list.photo.attach(io: superhero, filename: "superhero_films_flkbwk.jpg", content_type: "image/jpg")
+superhero_list.save
+
+classic = URI.open("https://res.cloudinary.com/dsx50recn/image/upload/v1678525760/classic_films_clhlpj.jpg")
+classic_list = List.new(name: 'Classic')
+classic_list.photo.attach(io: classic, filename: "classic_films_clhlpj.jpg", content_type: "image/jpg")
+classic_list.save
+
+Bookmark.create(comment: 'One of the best movie ever made', movie: Movie.all[3], list: timeless_list)
+Bookmark.create(comment: 'Truly timeless classic', movie: Movie.all[4], list: timeless_list)
+Bookmark.create(comment: 'Breathtaking...', movie: Movie.all[5], list: timeless_list)
+Bookmark.create(comment: "I'm truly amazed!", movie: Movie.all[6], list: timeless_list)
+
+Bookmark.create(comment: 'Rose and Jack, breathtaking...', movie: Movie.first, list: romance_list)
+Bookmark.create(comment: 'Very entertaining', movie: Movie.all[1], list: drama_list)
+Bookmark.create(comment: 'My favourite superhero movie!', movie: Movie.all[2], list: superhero_list)
+
+Review.create(content: 'Wonderfully curated', rating: 5, list: timeless_list)
+Review.create(content: 'Gone with the Wind should be in here!', rating: 3, list: timeless_list)
