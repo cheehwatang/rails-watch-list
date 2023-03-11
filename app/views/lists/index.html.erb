@@ -1,7 +1,15 @@
 <%= render 'shared/banner', { banner_image_path: (image_path 'movie_seats_background.png'), banner_text: 'Save your favourite movies!' } %>
 
 <div class="container position-relative w-75 my-5 pb-5" style="top: 70px;">
-  <h1 class="mb-4">My Lists</h1>
+  <h1 class="mb-4 fs-2">Top Movie Watchlists</h1>
+
+  <div class="cards">
+    <% @lists.each do |list| %>
+      <div class="card-category m-2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= list.photo.attached? ? (cl_image_path list.photo.key) : (image_path('film_redux_logo_white.png')) %>')">
+        <%= link_to list.name, list_path(list), class: 'card-link' %>
+      </div>
+    <% end %>
+  </div>
 
   <% if notice %>
     <div class="alert alert-success d-flex justify-content-between align-items-center">
@@ -11,12 +19,4 @@
       </a>
     </div>
   <% end %>
-
-  <div class="cards">
-    <% @lists.each do |list| %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= list.photo.attached? ? (cl_image_path list.photo.key, height: 300, crop: :fill) : (image_path('film_redux_logo_white.png')) %>')">
-        <%= link_to list.name, list_path(list), class: 'text-decoration-none text-white' %>
-      </div>
-    <% end %>
-  </div>
 </div>
