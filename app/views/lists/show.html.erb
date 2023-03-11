@@ -28,7 +28,7 @@
           <div class="mx-4 flex-grow-1 mb-3">
             <div class="d-flex gap-1 align-items-center mb-2">
               <%= link_to list_movie_path(@list, bookmark.movie), class: 'text-decoration-none text-dark fs-5 fw-bold' do %>
-                <%= bookmark.movie.title %><span class="text-secondary fs-6"> ・ <%= bookmark.movie.rating %> <i class="fa-solid fa-star" style="color: #FFD43B"></i></span>
+                <%= bookmark.movie.title %><span class="text-secondary fs-6"> ・ <%= bookmark.movie.rating %> <i class="fa-solid fa-star text-info"></i></span>
               <% end %>
             </div>
             <p class="text-secondary line-clamp"><%= bookmark.movie.overview %></p>
@@ -63,7 +63,7 @@
         <div class="border-bottom mb-3">
           <p class="mb-0">
             <% review.rating.times do %>
-              <i class="fa-solid fa-star" style="color: #FFD43B"></i>
+              <i class="fa-solid fa-star text-info"></i>
             <% end %> 
             <% (5 - review.rating).times do %>
               <i class="fa-solid fa-star" style="color: lightgrey"></i>
