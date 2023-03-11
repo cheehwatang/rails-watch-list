@@ -8,7 +8,7 @@ export default class extends Controller {
   }
 
   updateNavbarBackground() {
-    if (window.scrollY >= 400) {
+    if (window.scrollY >= 350) {
       this.element.classList.add("navbar-lewagon-white")
       this.logoTarget.classList.add("navbar-logo-black")
       this.newListTarget.classList.remove("btn-outline-light")
