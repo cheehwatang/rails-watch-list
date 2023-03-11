@@ -12,11 +12,6 @@
   </div>
 
   <% if notice %>
-    <div class="alert alert-success d-flex justify-content-between align-items-center">
-      <%= notice %>
-      <a class="link-secondary cursor-pointer" data-dismiss="notice" onclick="this.parentElement.classList.add('d-none');">
-        <i class="fa-sharp fa-solid fa-xmark"></i>
-      </a>
-    </div>
+    <%= render 'shared/alert', notice: notice %>
   <% end %>
 </div>
