@@ -11,9 +11,13 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
+  <body style="position: relative; min-height: calc(100vh - 40px)">
     <%= render 'shared/navbar' %>
 
-    <%= yield %>
+    <div class="h-100" style="padding-bottom: 80px;">
+      <%= yield %>
+    </div>
+
+    <%= render 'shared/footer' %>
   </body>
 </html>
