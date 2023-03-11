@@ -11,6 +11,7 @@
     </div>
   </div>
 
+  <%# MOVIES SECTION START %>
   <div class="cards mt-3">
     <% @list.bookmarks.each do |bookmark| %>
       <div class="card border border-0 rounded-4 shadow m-3" style="width: 350px;" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-offset="200">
@@ -33,12 +34,14 @@
       </div>
     <% end %>
   </div>
+  <%# MOVIES SECTION END %>
 
   <div class="btn btn-warning fw-bold text-white px-3 mx-3 border border-0 rounded-4" style="cursor: inherit"><i class="fa-solid fa-film"></i> <%= @list.bookmarks.count %> <%= 'movie'.pluralize(@list.bookmarks.count) %></div>
   <%= render 'shared/back_btn', link: lists_path %>
 
   <div class="w-100 border border-bottom border-2 border-muted my-4"></div>
 
+  <%# REVIEW SECTION START %>
   <div class="container d-flex">
     <div class="container">
       <h2 class="fs-4 my-3">Reviews</h2>
@@ -64,6 +67,7 @@
       </div>
     </div>
   </div>
+  <%# REVIEW SECTION END %>
 
   <% if notice %>
     <%= render 'shared/alert', notice: notice %>
