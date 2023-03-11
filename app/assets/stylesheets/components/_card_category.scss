@@ -34,3 +34,12 @@
 .card-link:hover {
   color: white;
 }
+
+.card {
+  transform: translateY(0);
+  transition: transform ease 0.5s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}

@@ -19,11 +19,13 @@
   font-family: $logo-font;
   font-size: 2.8rem;
   text-decoration: none;
-  transition: color ease 0.5s;
+  transform: scale(1, 1);
+  transition: transform ease 0.5s, color ease 0.5s;
 }
 
 .navbar-logo:hover {
   color: white;
+  transform: scale(1.1, 1.1);
 }
 
 .navbar-logo-black {

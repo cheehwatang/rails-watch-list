@@ -1,6 +1,6 @@
 <%= render 'shared/banner', { banner_image_path: (@list.photo.attached? ? (cl_image_path @list.photo.key) : (image_path('film_redux_logo_white'))), banner_text: "#{@list.name} Films" } %>
 
-<div class="container position-relative w-50 my-5 d-flex flex-column align-items-center gap-3" style="top: 80px;">
+<div class="container position-relative w-50 my-5 d-flex flex-column align-items-center gap-3" style="top: 80px; padding-bottom: 80px;">
   <%= image_tag @movie.poster_url, alt: "Poster of #{@movie.title}", height: 500, class: "mb-3" %>
   <h1 class="text-center fs-2"><%= @movie.title %></h1>  
   <p class="fs-5 lh-lg" style="text-align: justify;"><%= @movie.overview %></p>
