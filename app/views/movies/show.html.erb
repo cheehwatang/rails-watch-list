@@ -10,7 +10,5 @@
   <%= image_tag @movie.poster_url, alt: "Poster of #{@movie.title}", height: 500, class: "mb-3" %>
   <h1 class="text-center fs-2"><%= @movie.title %></h1>  
   <p class="fs-5 lh-lg" style="text-align: justify;"><%= @movie.overview %></p>
-  <%= link_to list_path(@list), class: 'btn btn-outline-primary px-3 rounded-4 my-4' do %>
-    <span><i class="fa-solid fa-rotate-left"></i> Back</span> 
-  <% end %>
+  <%= render 'shared/back_btn', link: list_path(@list) %>
 </div>

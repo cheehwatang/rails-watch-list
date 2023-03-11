@@ -45,7 +45,7 @@
     </div>
   <% end %>
 
-  <%= link_to 'Back', lists_path, class: 'btn btn-primary border border-0 rounded-4 my-5 px-4 py-2' %>
+  <%= render 'shared/back_btn', link: lists_path %>
 
   <div class="container w-50">
     <h2 class="fs-3 my-3 ps-4">Add Movie to List</h2>
