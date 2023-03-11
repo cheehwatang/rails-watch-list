@@ -1,11 +1,4 @@
-<div class="banner position-relative"
-  style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= @list.photo.attached? ? (cl_image_path @list.photo.key) : (image_path('film_redux_logo_white')) %>'); top: 70px;"
->
-  <div class="btn btn-warning fw-bold text-white px-3 position-absolute border border-0 rounded-4" style="bottom: 20px; right: 20px;"><%= @list.bookmarks.count %> <%= 'movie'.pluralize(@list.bookmarks.count) %></div>
-  <div class="container text-center">
-    <h1 class="fs-1 pb-3"><%= @list.name %> Movies</h1>
-  </div>
-</div>
+<%= render 'shared/banner', { banner_image_path: (@list.photo.attached? ? (cl_image_path @list.photo.key) : (image_path('film_redux_logo_white'))), banner_text: "#{@list.name} Films" } %>
 
 <div class="container position-relative w-75 my-5 pb-5" style="top: 70px;">
 
@@ -45,6 +38,7 @@
     </div>
   <% end %>
 
+  <div class="btn btn-warning fw-bold text-white px-3 me-3 border border-0 rounded-4"><i class="fa-solid fa-film"></i> <%= @list.bookmarks.count %> <%= 'movie'.pluralize(@list.bookmarks.count) %></div>
   <%= render 'shared/back_btn', link: lists_path %>
 
   <div class="container w-50">

@@ -1,8 +1,4 @@
-<div class="banner position-relative" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path 'movie_seats_background.png' %>); top: 70px;">
-  <div class="container text-center">
-    <h1 class="fs-1 pb-3">Save your favourite movies!</h1>
-  </div>
-</div>
+<%= render 'shared/banner', { banner_image_path: (image_path 'movie_seats_background.png'), banner_text: 'Save your favourite movies!' } %>
 
 <div class="container position-relative w-75 my-5 pb-5" style="top: 70px;">
   <h1 class="mb-4">My Lists</h1>
