@@ -3,13 +3,13 @@ class ReviewsController < ApplicationController
     @list = List.find(params[:list_id])
     @review = Review.new(review_params)
     @review.list = @list
-    @reviews = @list.reviews.order(updated_at: :DESC)
     
     if @review.save
       redirect_to list_path(@list)
     else
+      @reviews = @list.reviews.order(updated_at: :DESC)
       @bookmark = Bookmark.new
-      @movies = Movie.excluding(@list.movies)
+      @movies = Movie.excluding(@list.movies).order(:title)
       render 'lists/show', status: :unprocessable_entity
     end
   end
