@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
     @review.list = @list
     
     if @review.save
-      redirect_to list_path(@list)
+      redirect_to list_path(@list), notice: 'Review was successfully posted'
     else
       @reviews = @list.reviews.order(updated_at: :DESC)
       @bookmark = Bookmark.new

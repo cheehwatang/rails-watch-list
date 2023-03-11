@@ -5,7 +5,7 @@ class BookmarksController < ApplicationController
     @bookmark.list = @list
     
     if @bookmark.save
-      redirect_to list_path(@list)
+      redirect_to list_path(@list), notice: 'Movie was successfully added'
     else
       @movies = Movie.excluding(@list.movies)
       @reviews = @list.reviews.order(updated_at: :DESC)
