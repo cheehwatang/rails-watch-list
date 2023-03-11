@@ -1,5 +1,5 @@
 <%= simple_form_for [list, review] do |f| %>
   <%= f.input :content %>
-  <%= f.input :rating %>
+  <%= f.input :rating, collection: (1..5).to_a, input_html: {data: {controller: "star-rating"}} %>
   <%= f.submit class: "btn btn-outline-primary" %>
 <% end %>
