@@ -11,7 +11,5 @@
     <% end %>
   </div>
 
-  <% if notice %>
-    <%= render 'shared/alert', notice: notice %>
-  <% end %>
+  <%= render 'shared/flashes', notice: notice %>
 </div>

@@ -19,7 +19,7 @@ class BookmarksController < ApplicationController
     list = bookmark.list
     bookmark.destroy
 
-    redirect_to list_path(list), notice: 'Movie was successfully removed', status: :see_other
+    redirect_to list_path(list), alert: 'Movie was successfully removed', status: :see_other
   end
 
   private
