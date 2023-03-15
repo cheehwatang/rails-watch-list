@@ -1,0 +1,12 @@
+.link {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.green-link {
+  color: $success;
+}
+
+.green-link:hover {
+  text-decoration: underline;
+}
