@@ -7,7 +7,7 @@
           <% if user_signed_in? %>
             <%= link_to 'Logout', destroy_user_session_path, data: {turbo_method: :delete}, class: "btn btn-success px-3 rounded-4" %>
           <% else %>
-            <div class="nav-item d-inline"><%= link_to "Sign in", new_user_session_path, class: "btn btn-outline-success px-3 rounded-4" %></div>
+            <button type="button" class="btn btn-outline-success px-3 rounded-4" data-bs-toggle="modal" data-bs-target="#loginModal">"Sign in"</button>
             <div class="nav-item d-inline"><%= link_to "Join", new_user_registration_path, class: "btn btn-success px-3 rounded-4" %></div>
           <% end %>
         </li>
