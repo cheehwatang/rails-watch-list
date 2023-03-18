@@ -12,7 +12,7 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body data-controller="user" style="position: relative; min-height: calc(100vh - 40px)">
+  <body style="position: relative; min-height: calc(100vh - 40px)">
     <%= render 'shared/navbar' %>
     <% unless user_signed_in? %>
       <%= render 'devise/sessions/new_session_form', resource: User.new, resource_name: :user, devise_mapping: Devise.mappings[:user] %>
