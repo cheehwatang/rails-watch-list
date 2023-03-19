@@ -1,4 +1,5 @@
-<%= simple_form_for [list, review] do |f| %>
+<%= simple_form_for([list, review],
+  data: {insert_in_list_target: "form"}) do |f| %>
   <%= f.input :content %>
   <%= f.input :rating, collection: (1..5).to_a, input_html: {data: {controller: "star-rating"}} %>
   <%= f.submit 'Post Review', class: "btn btn-outline-primary" %>

@@ -42,8 +42,8 @@
   <div class="w-100 border border-bottom border-2 border-muted my-4"></div>
 
   <%# REVIEW SECTION START %>
-  <div class="container d-flex">
-    <div class="container">
+  <div class="container d-flex" data-controller="insert-in-list">
+    <div class="container" data-insert-in-list-target="items">
       <h2 class="fs-4 my-3">Reviews</h2>
       <% @reviews.each do |review| %>
         <div class="border-bottom mb-3">
