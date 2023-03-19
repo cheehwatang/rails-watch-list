@@ -273,6 +273,14 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET']
+  config.omniauth :spotify, ENV['SPOTIFY_CLIENT_ID'], ENV['SPOTIFY_CLIENT_SECRET'],
+    callback_url: "#{Rails.env.production? ? 'https://film-redux.herokuapp.com' : 'http://localhost:3000'}/users/auth/spotify/callback/",
+    scope: %w(
+      playlist-read-private
+      user-library-read
+      user-read-private
+      user-read-email
+    ).join(' ')
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
