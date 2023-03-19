@@ -43,22 +43,24 @@
 
   <%# REVIEW SECTION START %>
   <div class="container d-flex" data-controller="insert-in-list">
-    <div class="container" data-insert-in-list-target="items">
+    <div class="container">
       <h2 class="fs-4 my-3">Reviews</h2>
-      <% @reviews.each do |review| %>
-        <div class="border-bottom mb-3">
-          <p class="mb-0">
-            <% review.rating.times do %>
-              <i class="fa-solid fa-star text-info"></i>
-            <% end %> 
-            <% (5 - review.rating).times do %>
-              <i class="fa-solid fa-star" style="color: lightgrey"></i>
-            <% end %> 
-            <span class="text-secondary" style="font-size: 12px"><em><%= time_ago_in_words(review.created_at) %> ago</em></span>
-          </p>
-          <p><%= review.content %></p>
-        </div>
-      <% end %>
+      <div class="container" data-insert-in-list-target="items">
+        <% @reviews.each do |review| %>
+          <div class="border-bottom mb-3">
+            <p class="mb-0">
+              <% review.rating.times do %>
+                <i class="fa-solid fa-star text-info"></i>
+              <% end %> 
+              <% (5 - review.rating).times do %>
+                <i class="fa-solid fa-star" style="color: lightgrey"></i>
+              <% end %> 
+              <span class="text-secondary" style="font-size: 12px"><em><%= time_ago_in_words(review.created_at) %> ago</em></span>
+            </p>
+            <p><%= review.content %></p>
+          </div>
+        <% end %>
+      </div>
     </div>
     <div class="container">
       <h2 class="fs-4 my-3 ps-4">Post your review</h2>

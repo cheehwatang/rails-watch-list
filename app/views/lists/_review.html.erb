@@ -1,0 +1,12 @@
+<div class="border-bottom mb-3">
+  <p class="mb-0">
+    <% review.rating.times do %>
+      <i class="fa-solid fa-star text-info"></i>
+    <% end %> 
+    <% (5 - review.rating).times do %>
+      <i class="fa-solid fa-star" style="color: lightgrey"></i>
+    <% end %> 
+    <span class="text-secondary" style="font-size: 12px"><em><%= time_ago_in_words(review.created_at) %> ago</em></span>
+  </p>
+  <p><%= review.content %></p>
+</div>
